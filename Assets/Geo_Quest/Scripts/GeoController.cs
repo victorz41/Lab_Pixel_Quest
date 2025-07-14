@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class GeoController : MonoBehaviour
@@ -22,45 +20,58 @@ public class GeoController : MonoBehaviour
         float xSpeed = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(xSpeed * speed, rb.velocity.y);
     }
-        private void OnCollisionEnter2D(Collision2D collision)
+    //    private void OnCollisionEnter2D(Collision2D collision)
+    //{
+      //  Debug.Log("Hit");
+    //}
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Hit");
+        switch (collision.tag)
+        {
+            case "Death":
+                {
+                    string thisLevel = SceneManager.GetActiveScene().name;
+                    SceneManager.LoadScene(thisLevel);
+                    break;
+                }
+    
+        }
+
     }
 
 
 
 
 
+    //rb.velocity = new Vector2(-1, rb.velocity.y);
+    // print(var1);
+    //var1++;
+    //transform.position += new Vector3(0.0005f, 0, 0);
+    //print(1 == 2);
+    //if (6 == 7)
+    //print("67");
+    //else
+    //print("gurt");
+    //if (Input.GetKeyDown(KeyCode.W)  || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Mouse0)) 
+    //{ 
+    //transform.position += new Vector3(0, 1, 0);
+    //}
+
+    //if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+    //{
+    //    transform.position += new Vector3(-1, 0, 0);
+    //}
+
+    //if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+    //{
+    //    transform.position += new Vector3(0, -1, 0);
+    //}
+
+    //if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+    //{
+    //   transform.position += new Vector3(1, 0, 0);
+    //}
 
 
-        //rb.velocity = new Vector2(-1, rb.velocity.y);
-        // print(var1);
-        //var1++;
-        //transform.position += new Vector3(0.0005f, 0, 0);
-        //print(1 == 2);
-        //if (6 == 7)
-        //print("67");
-        //else
-        //print("gurt");
-        //if (Input.GetKeyDown(KeyCode.W)  || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Mouse0)) 
-        //{ 
-        //transform.position += new Vector3(0, 1, 0);
-        //}
-
-        //if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-        //{
-        //    transform.position += new Vector3(-1, 0, 0);
-        //}
-
-        //if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-        //{
-        //    transform.position += new Vector3(0, -1, 0);
-        //}
-
-        //if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-        //{
-         //   transform.position += new Vector3(1, 0, 0);
-        //}
-
-    
 }
