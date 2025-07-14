@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 422778259}
   m_Layer: 0
   m_Name: Triangle
-  m_TagString: Untagged
+  m_TagString: Death
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -577,6 +577,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  nextLevel: Scene_2
 --- !u!50 &1139869449
 Rigidbody2D:
   serializedVersion: 4
