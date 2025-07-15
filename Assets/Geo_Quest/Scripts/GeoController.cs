@@ -8,24 +8,41 @@ public class GeoController : MonoBehaviour
     private Rigidbody2D rb;
     public int speed = 3;
     public string nextLevel = "Scene_2";
-
+    private SpriteRenderer square;
     // Start is called before the first frame update
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        square = GetComponentInChildren<SpriteRenderer>();
     }
+
+    
     // Update is called once per frame
     void Update()
     {
         float xSpeed = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(xSpeed * speed, rb.velocity.y);
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            square.color = Color.white;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            square.color = Color.red;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            square.color = Color.blue;
+        }
     }
     //    private void OnCollisionEnter2D(Collision2D collision)
     //{
       //  Debug.Log("Hit");
     //}
 
+       
     private void OnTriggerEnter2D(Collider2D collision)
     {
         switch (collision.tag)
@@ -45,6 +62,7 @@ public class GeoController : MonoBehaviour
         }
 
     }
+
 
 
 
