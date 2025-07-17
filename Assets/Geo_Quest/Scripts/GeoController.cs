@@ -72,11 +72,7 @@ public class GeoController : MonoBehaviour
     // print(var1);
     //var1++;
     //transform.position += new Vector3(0.0005f, 0, 0);
-    //print(1 == 2);
-    //if (6 == 7)
-    //print("67");
-    //else
-    //print("gurt");
+
     //if (Input.GetKeyDown(KeyCode.W)  || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Mouse0)) 
     //{ 
     //transform.position += new Vector3(0, 1, 0);
