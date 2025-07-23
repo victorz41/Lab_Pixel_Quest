@@ -5,23 +5,39 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
-    public string nextLevel = "GeoLevel_2";
 
     public int coinCount = 0;
 
     public int Health = 3;
+
+    public Transform Respawn_point;
     // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D collision) {
             switch (collision.tag)
             {
+            case "Respawn":
+                {
+                    Respawn_point.position = collision.transform.Find("point").position;
+                    break;
+                }
                 case "Death":
                     {
-                        string thisLevel = SceneManager.GetActiveScene().name;
-                        SceneManager.LoadScene(thisLevel);
-                        break;
+                        Health--;
+                        if (Health == 0)
+                        {
+                            string thisLevel = SceneManager.GetActiveScene().name;
+                            SceneManager.LoadScene(thisLevel);
+                        }
+                        else
+                        {
+                            transform.position = Respawn_point.position;
+                        }
+                       break;
+                    
                     }
                 case "Finish":
                     {
+                        string nextLevel = collision.GetComponent<LevelGoal>().nextLevel;
                         SceneManager.LoadScene(nextLevel);
                         break;
                     }
@@ -33,8 +49,11 @@ public class PlayerStats : MonoBehaviour
                 }
                 case "Health":
                     {
-                        Health++;
-                        Destroy(collision.gameObject);
+                        if (Health < 3)
+                        {
+                            Destroy(collision.gameObject);
+                            Health++;
+                        }
                         break;
                     }
 
